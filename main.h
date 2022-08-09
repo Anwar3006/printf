@@ -17,10 +17,10 @@ struct convert
 	char *sym;
 	int (*f)(va_list);
 };
-typedef struct convert changer;
+typedef struct convert conver_t;
 
 /*Main functions*/
-int parser(const char *format, changer function_list[], va_list arg);
+int parser(const char *format, conver_t function_list[], va_list arg);
 int _printf(const char *format, ...);
 int output(char);
 int print_char(va_list);
@@ -29,4 +29,4 @@ int print_percent(va_list);
 int print_integer(va_list);
 int print_number(va_list);
 
-
+#endif
