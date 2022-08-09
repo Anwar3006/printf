@@ -1,7 +1,32 @@
-#ifndef PRINTF_
-#define PRINTF_
+#ifndef PRINTER
+#define PRINTER
 
-#include <stdio.h>
+
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdarg.h>
 
-void output(char c);
+/**
+* struct convert - defines a structure for symbols and functions
+*
+* @sym: The operator
+* @f: The function associated
+*/
+struct convert
+{
+	char *sym;
+	int (*f)(va_list);
+};
+typedef struct convert changer;
+
+/*Main functions*/
+int parser(const char *format, changer function_list[], va_list arg);
+int _printf(const char *format, ...);
+int output(char);
+int print_char(va_list);
+int print_string(va_list);
+int print_percent(va_list);
+int print_integer(va_list);
+int print_number(va_list);
+
+

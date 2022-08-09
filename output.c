@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * output: Returns value of c to output
- * @c: value to be returned
+ * output - prints the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-
-
-
-void output(char c)
-{       
-        putchar(c);
+int output(char c)
+{
+	return (write(1, &c, 1));
 }

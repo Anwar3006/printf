@@ -1,49 +1,30 @@
 #include "main.h"
 
 /**
- * _printf: Returns format string
- * @format: A stirng containing all the desired characters
- */
+* _printf - Receives the main string and all the necessary parameters to
+* print a formated string
+* @format: A string containing all the desired characters
+* Return: A total count of the characters printed
+*/
 
-void _printf(const char* format, ...)
+int _printf(const char *format, ...)
 {
-	char *words;
-	char *letters;
-	char *iterate;
-	va_list arg_list;
+	int to_print;
+	changer Spec_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{"d", print_integer},
+		{"i", print_integer},
+		{NULL, NULL}
+	};
+	va_list arg;
 
-	va_start(arg_list, format);
-	for (iterate = format; *iterate != '\0'; *iterate++)
-	{
-		if (*iterate == NULL)
-		{
-			return -1;
-		}
-		
-		if (*iterate == '%')
-		{
-			*iterate++;
-			switch (*iterate)
-			{
-				case 's':
-					words = va_arg(arg_list, char*);
-					while (*words != '\0')
-					{
-						output(*words++);
-					}
-				break;
-				case 'c':
-					letters = va_arg(arg_list, char*);
-					output(*letters);
-				break;
-			}
-		}
-		else 
-		{
-			output(*ptr);
-		}
-	}
-	va_end(arg_list);
-}	
-					
+	if (format == NULL)
+		return (-1);
+	va_start(arg, format);
 
+	to_print = parser(format, Spec_list, arg);
+	va_end(arg);
+	return (to_print);
+}
