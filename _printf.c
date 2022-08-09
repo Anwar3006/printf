@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	int to_print;
-	changer Spec_list[] = {
+	conver_t Spec_list[] = {
 		{"c", print_char},
 		{"s", print_string},
 		{"%", print_percent},

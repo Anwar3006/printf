@@ -8,11 +8,11 @@
  * @arg: A list containing all the argumentents passed to the program.
  * Return: A total count of the characters printed.
  */
-int parser(const char *format, changer function_list[], va_list arg)
+int parser(const char *format, conver_t function_list[], va_list arg)
 {
-	int i, j, r_val, printed_chars;
+	int i, j, r_val, to_print;
 
-	printed_chars = 0;
+	to_print = 0;
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%') 
@@ -24,7 +24,7 @@ int parser(const char *format, changer function_list[], va_list arg)
 					r_val = function_list[j].f(arg);
 					if (r_val == -1)
 						return (-1);
-					printed_chars += r_val;
+					to_print += r_val;
 					break;
 				}
 			}
@@ -34,7 +34,7 @@ int parser(const char *format, changer function_list[], va_list arg)
 				{
 					output(format[i]);
 					output(format[i + 1]);
-					printed_chars = printed_chars + 2;
+					to_print = to_print + 2;
 				}
 				else
 					return (-1);
@@ -44,8 +44,8 @@ int parser(const char *format, changer function_list[], va_list arg)
 		else
 		{
 			output(format[i]); 
-			printed_chars++;
+			to_print++;
 		}
 	}
-	return (printed_chars);
+	return (to_print);
 }
